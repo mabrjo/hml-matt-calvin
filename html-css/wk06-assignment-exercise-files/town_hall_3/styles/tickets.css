@@ -47,20 +47,37 @@ header img {
 }
 /* the styles for the form */
 fieldset {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding-top: .5em;
+    margin-top: 0;
+    margin-bottom: .5em;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	padding-right: 1em;
+	padding-left: 1em;
 }
 legend {
-    color: #931420;
+    color: black;
     font-weight: bold;
     font-size: 85%;
     margin-bottom: .5em;
 }
 label {
     float: left;
-    width: 12em;
+    width: 8em;
     text-align: right;
+}
+#paymentfield label{
+	float:none;
+	
+}
+#paymentfield input{
+	width: auto;
+	margin-left: 3em;
+}
+#Month_Exp{
+	width:7em;
+}
+#Year_Exp{
+	width:5em;
 }
 label, input, select {
 	font-size: 90%;
@@ -71,19 +88,21 @@ input, select {
     margin-bottom: .5em;
 }
 input:required, input[required] {
-	border: 3px solid red;
+	border: 2px solid #800000;
 }
 input:valid {
 	border: 1px solid black;
 }
 input:invalid {
 	box-shadow: none;
+	border: 2px solid #800000;
 }
 br {
     clear: both;
 }
 #buttons input {
 	width: 10em;
+	float:right;
 }
 /* the styles for the navigation menu */
 #nav_menu ul {

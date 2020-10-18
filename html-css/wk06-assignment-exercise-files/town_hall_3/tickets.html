@@ -7,6 +7,35 @@
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<link rel="stylesheet" href="styles/normalize.css">
 	<link rel="stylesheet" href="styles/tickets.css">
+	<script>
+	
+	window.rInterval=function(a,b){var c=Date.now,d=window.requestAnimationFrame,e=c(),f,g=function(){c()-e<b||(e+=b,a());f||d(g)};d(g);return{clear:function(){f=1}}};
+window.rtimeOut=function(a,b){var c=Date.now,d=window.requestAnimationFrame,e=c(),f,g=function(){c()-e<b?f||d(g):a()};d(g);return{clear:function(){f=1}}};
+
+
+	var interval1,timeout1;
+window.onload=function(){
+ interval1=window.rInterval(function(){removeResets()},10000);
+ timeout1=window.rtimeOut(function(){console.log('timeout1')},5000);
+}
+
+function removeResets() {
+element = document.querySelectorAll('input');
+	for (i = 0; i < element.length; i++ ) {
+		if (element[i].classList.contains("reset")) {
+			element[i].classList.remove("reset");
+		}
+	}
+}
+function addResets() {
+	element = document.querySelectorAll('input');
+	for (i = 0; i < element.length; i++ ) {
+	 element[i].classList.add("reset");
+	}
+	
+}
+
+</script>
 </head>
 
 <body>
@@ -33,23 +62,14 @@
 	</nav>
 	<main>
 		<section>
-			<h1>Become a Member</h1>
+			<h1>Order Form</h1>
     		<form action="register_account.html" method="get"
         		name="registration_form" id="registration_form">
     			<fieldset>
-	        		<legend>Registration Information</legend>
+	        		<legend>Member Information</legend>
 	        		<label for="email">E-Mail:</label>
-	        		<input type="email" name="email" id="email" autofocus required><br>
-	        		<label for="password">Password:</label>
-	        		<input type="password" name="password" id="password" required
-	                   	   placeholder="At least 6 letters or numbers"
-	                   	   pattern="[a-zA-Z0-9]{6,}" title="Must be at least 6 alphanumeric characters"><br>
-	        		<label for="verify">Verify Password:</label>
-	        		<input type="password" name="verify" id="verify" required><br>
-    			</fieldset>
-    			<fieldset>
-        			<legend>Member Information</legend>
-        			<label for="first_name">First Name:</label>
+					<input type="email" name="email" id="email" autofocus required><br>
+					<label for="first_name">First Name:</label>
 					<input type="text" name="first_name" id="first_name" required><br>
 					<label for="last_name">Last Name:</label>
 					<input type="text" name="last_name" id="last_name" required><br>
@@ -67,23 +87,61 @@
 				       	   pattern="\d{3}[\-]\d{3}[\-]\d{4}" title="Must be 999-999-999 format"><br>
 				</fieldset>
 				<fieldset>
-					<legend>Membership Information</legend>
-					<label for="membership_type">Membership Type:</label>
-					<select name="membership_type" id="membership_type">
-				    	<option value="j">Junior</option>
-				    	<option value="r">Regular</option>            
-				    	<option value="c">Charter</option>
+					<legend>Ordering Information</legend>
+					<label for="Order_Type">Order Type:</label>
+					<select name="Order_Type" id="Order_Type">
+				    	<option value="m">Member Package</option>
+				    	<option value="d">Donor Package</option>            
+				    	<option value="s">Single Ticket</option>
 					</select><br>
-					<label for="starting_date">Starting Date:</label>
-					<input type="date" name="starting_date" id="starting_date" required><br>
-					<label for="tickets">Tickets for Guests:</label>
-					<input type="number" name="tickets" id="tickets" value="2" min="1" max="4" placeholder="from 1 to 4"><br>
+					<label for="tickets">Number of Tickets:</label>
+					<input type="text" name="tickets" id="tickets" placeholder="Number of Single Tickets"><br>
+				</fieldset>
+				<fieldset id="paymentfield">
+					<legend>Payment Method</legend>
+					<input type="radio" name="Payment" id="Bill_Me" value="Bill_Me">
+					<label for="Bill_Me">Bill Me</label>
+
+					<input type="radio" name="Payment" id="Credit_Card" value="Credit_card">
+					<label for="Credit_Card">Credit Card</label>
+				</fieldset>
+				<fieldset>
+					<legend>Credit Card Information</legend>
+					<label for="Card_Type">Card Type:</label>
+					<select name="Card_Type" id="Card_Type">
+				    	<option value="v">Visa</option>
+				    	<option value="m">MasterCard</option>            
+				    	<option value="d">Discover</option>
+					</select><br>
+					<label for="Card_Number">Card Number:</label>
+					<input type="text" name="Card_Number" id="Card_Number" placeholder="16 Digits" pattern="\d{16}"><br>
+					<label for="Expiration_Date">Expiration Date:</label>
+					<select name="Expiration_Date" id="Month_Exp">
+				    	<option value="01">January</option>
+				    	<option value="02">February</option>            
+						<option value="03">March</option>
+						<option value="04">April</option>
+				    	<option value="05">May</option>            
+						<option value="06">June</option>
+						<option value="07">July</option>
+				    	<option value="08">August</option>            
+						<option value="09">September</option>
+						<option value="10">October</option>
+				    	<option value="11">November</option>            
+				    	<option value="12">December</option>
+					</select>
+					<select name="Expiration_Date" id="Year_Exp">
+				    	<option value="2017">2017</option>
+				    	<option value="2018">2018</option>            
+						<option value="2019">2019</option>
+						<option value="2020">2020</option>
+				    	<option value="2021">2021</option>            
+					</select><br>
 				</fieldset>
 				<fieldset id="buttons">
-					<legend>Submit Your Membership</legend>
-					<label>&nbsp;</label>
-					<input type="submit" id="submit" value="Submit">
-					<input type="reset" id="reset" value="Reset Fields"><br>
+					<legend>Submit Your Order</legend>
+					<input type="reset" id="reset" value="Reset Fields" onclick="addResets()">
+					<input type="submit" id="submit" value="Submit"><br>					
 				</fieldset>
 			</form>
 		</section>
