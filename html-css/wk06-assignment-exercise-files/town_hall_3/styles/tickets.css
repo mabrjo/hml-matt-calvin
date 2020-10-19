@@ -87,22 +87,49 @@ input, select {
     margin-left: .5em;
     margin-bottom: .5em;
 }
+input, select, radio {
+	transition: 0.5s;
+	transition-property: border, background-color;
+}
 input:required, input[required] {
-	border: 2px solid #800000;
+	border: 3px solid #800000;
 }
 input:valid {
 	border: 1px solid black;
 }
 input:invalid {
 	box-shadow: none;
-	border: 2px solid #800000;
+	border: 3px solid #800000;
+}
+input:focus, select:focus {
+	border: 5px solid #33ccff;
+	background-color: #66ffff;
 }
 br {
     clear: both;
 }
 #buttons input {
 	width: 10em;
-	float:right;
+}
+#submit {
+	background: url(../images/submit.png) -10px -10px;
+}
+#submit:hover {
+    background: url(../images/submit.png) -10px -161px;
+}
+.animation {
+	animation-name: resetfields;
+	animation-duration: 5s;
+	animation-iteration-count: 2;
+	animation-timing-function: ease-in-out;
+}
+@keyframes resetfields {
+	from {
+		width: 15em;
+	}
+	to {
+		width: 1em;
+	}
 }
 /* the styles for the navigation menu */
 #nav_menu ul {
@@ -191,4 +218,27 @@ footer p {
 	text-align: center;
 	color: white;
 	padding: 1em 0;
+}
+
+/* SVG STYLING */
+.nospeaker {
+	fill: #000000;
+	opacity: 1;
+	fill-opacity: 1;
+	padding-bottom: 1em;
+} 
+.nospeaker:hover {
+	fill: #800000;
+}
+
+
+.bg-green {
+    width: 400px; height: 131px;
+    background: url('css_sprites.png') -10px -10px;
+}
+
+
+.bg-lightblue {
+    width: 400px; height: 131px;
+    background: url('css_sprites.png') -10px -161px;
 }

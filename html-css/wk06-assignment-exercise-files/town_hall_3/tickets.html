@@ -32,6 +32,7 @@ function addResets() {
 	for (i = 0; i < element.length; i++ ) {
 	 element[i].classList.add("reset");
 	}
+	('.transform').toggleclass('.transform-active');
 	
 }
 
@@ -74,7 +75,7 @@ function addResets() {
 					<label for="last_name">Last Name:</label>
 					<input type="text" name="last_name" id="last_name" required><br>
 					<label for="address">Address:</label>
-					<input type="text" name="address" id="address"><br>
+					<input type="text" name="address" id="address" required><br>
 					<label for="city">City:</label>
 					<input type="text" name="city" id="city" required><br>
 					<label for="state">State:</label>
@@ -101,7 +102,6 @@ function addResets() {
 					<legend>Payment Method</legend>
 					<input type="radio" name="Payment" id="Bill_Me" value="Bill_Me">
 					<label for="Bill_Me">Bill Me</label>
-
 					<input type="radio" name="Payment" id="Credit_Card" value="Credit_card">
 					<label for="Credit_Card">Credit Card</label>
 				</fieldset>
@@ -114,7 +114,10 @@ function addResets() {
 				    	<option value="d">Discover</option>
 					</select><br>
 					<label for="Card_Number">Card Number:</label>
-					<input type="text" name="Card_Number" id="Card_Number" placeholder="16 Digits" pattern="\d{16}"><br>
+					<input type="text" name="Card_Number" id="Card_Number" 
+					placeholder="XXXX-XXXX-XXXX-XXXX" 
+					pattern="\d{4}[\-]\d{4}[\-]\d{4}[\-]\d{4}"
+					title="Must be XXXX-XXXX-XXXX-XXXX format"><br>
 					<label for="Expiration_Date">Expiration Date:</label>
 					<select name="Expiration_Date" id="Month_Exp">
 				    	<option value="01">January</option>
@@ -140,8 +143,9 @@ function addResets() {
 				</fieldset>
 				<fieldset id="buttons">
 					<legend>Submit Your Order</legend>
-					<input type="reset" id="reset" value="Reset Fields" onclick="addResets()">
-					<input type="submit" id="submit" value="Submit"><br>					
+					<label for="SubmitOrder">&nbsp;</label>
+					<input type="submit" id="submit" value="Submit">
+					<input type="reset" id="reset" value="Reset Fields" onclick="addResets()">					
 				</fieldset>
 			</form>
 		</section>
@@ -155,6 +159,10 @@ function addResets() {
 			<img src="images/chua75.jpg" alt="Amy Chua photo">
 			<h3>February<br><a href="speakers/c7_sampson.html">Scott Sampson</a></h3>
 			<img src="images/sampson75.jpg" alt="Scott Sampson photo">
+			<h3>March<br><a href="">COVID-19 Cancellation</a></h3>
+			<svg width="75px" height="75px">
+				<rect class="nospeaker" width="75px" height="75px"/>
+			</svg>
 		</aside>
 	</main>
 	<footer>
